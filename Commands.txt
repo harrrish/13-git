@@ -1,0 +1,85 @@
+01) Initialize a repository 
+    git init
+
+02) Initial Commit 
+    git commit -m "initial commit"
+
+03) Stages of files in git 
+    Git tracks **file states**, not steps.
+        ### 0) **Untracked** 
+            > Any new file added will be marked as **untracked**.
+                Meaning:
+                * File exists in working directory
+                * Git does not know about it yet
+
+        ### 1) **Staged** 
+            > when we add the file, the file gets staged ready to be committed and tracked.
+            > When you run `git add`, the **current snapshot** of the file is placed in the **staging area**.
+            Important:
+            * Staging is **not the same as tracking**
+            * Staging is **temporary selection for next commit**
+
+        ### 2) **Tracked** 
+            > Git knows about the file and ready for commit.
+            > A **tracked file** is **any file that has been committed at least once** or is already in the index.
+            Tracked files can be in these states:
+            * Unmodified
+            * Modified
+            * Staged
+            📌 **Tracking is a file property, not a state like staged/modified.**
+
+        ### 3) **Modified** 
+            > Two things is the file committed or already is going through the first commit.
+            > A file is **modified** when its working-directory version differs from the last committed or staged version.
+            > You do **NOT** need to unstage first.
+            If a file is staged and then modified again:
+            ```bash
+            git add file.txt
+            ```
+            is enough.
+
+            No unstaging required.
+
+    ## Key rules (memorize these)
+        1️⃣ **Tracking**
+        * Happens after first commit
+        * Permanent unless file is removed
+
+        2️⃣ **Staging**
+        * Snapshot-based
+        * Must re-stage after any further modification
+
+        3️⃣ **Commit**
+        * Only includes what is staged
+
+    ## Fixed version of YOUR explanation (clean)
+        0) Untracked:
+        New file, Git does not know about it.
+
+        1) Staged:
+        Current snapshot of the file is added to the staging area.
+
+        2) Tracked:
+        File has been committed at least once and is known to Git.
+
+        3) Modified:
+        File content differs from last staged or committed version.
+        If modified after staging, it must be staged again to include new changes.
+
+    ## One-line summary: **Tracking is about whether Git knows the file; staging is about what version of the file will be committed.**
+
+04) Give the status of all the files. (We check if they are tracked / untracked / staged / unstaged)
+    git status 
+
+04) Stage one particular file 
+    git add <filename>  
+
+05) Stage all the files   
+    git add .
+
+06) Unstage one particular file 
+    git restore --staged Commands.txt
+
+07) Unstage all the files  
+    git restore --staged .
+
